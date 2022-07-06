@@ -1,4 +1,4 @@
-import { initalizeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -10,7 +10,7 @@ const firebaseConfig = {
   appId: "1:872510094641:web:79656a74599f025d148410"
 };
 
-const app = initalizeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 async function loginWithGoogle() {
   try {

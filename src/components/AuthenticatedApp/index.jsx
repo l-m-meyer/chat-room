@@ -1,3 +1,5 @@
-export default function AuthenticatedApp() {
+function AuthenticatedApp() {
   return <div>I'm authenticated!</div>
 }
+
+export { AuthenticatedApp };

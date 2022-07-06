@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth";
 
-export default function useAuth() {
+function useAuth() {
   const value = useContext(AuthContext);
 
   if (!value) {
@@ -10,3 +10,5 @@ export default function useAuth() {
 
   return value;
 }
+
+export { useAuth };
