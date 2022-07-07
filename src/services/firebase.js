@@ -1,6 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth
+} from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD0neU_DLfDDzApm9JFNZM42iOX0baeb-g",
@@ -33,4 +42,17 @@ async function loginWithGoogle() {
   }
 }
 
-export { loginWithGoogle };
+async function sendMessage(roomId, user, text) {
+  try {
+    await addDoc(collection(db, 'chat-rooms', roomId, 'messages'), {
+      uid: user.uid,
+      displayName: user.displayName,
+      text: text.trim(),
+      timestamp: serverTimestamp(),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export { loginWithGoogle, sendMessage };
