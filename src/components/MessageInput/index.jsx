@@ -18,7 +18,10 @@ function MessageInput({ roomId }) {
   }
 
   return (
-    <form>
+    <form
+      onSubmit={handleSubmit}
+      className="message-input-container"
+    >
       <input
         type="text"
         placeholder="Enter a message"
