@@ -3,7 +3,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   getAuth,
-  signOut
 } from "firebase/auth";
 import {
   getFirestore,
