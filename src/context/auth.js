@@ -20,7 +20,7 @@ const AuthProvider = (props) => {
   const logout = () => {
     if (user) {
       logoutUser();
-      setUser('');
+      setUser(null);
     }
   }
 
