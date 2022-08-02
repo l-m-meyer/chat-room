@@ -2,7 +2,8 @@ import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  getAuth
+  getAuth,
+  signOut
 } from "firebase/auth";
 import {
   getFirestore,
@@ -45,6 +46,11 @@ async function loginWithGoogle() {
   }
 }
 
+async function logoutUser() {
+  const auth = getAuth();
+  await auth.signOut(auth);
+}
+
 async function sendMessage(roomId, user, text) {
   try {
     await addDoc(collection(db, 'chat-rooms', roomId, 'messages'), {
@@ -74,4 +80,4 @@ function getMessages(roomId, callback) {
   )
 }
 
-export { loginWithGoogle, sendMessage, getMessages };
+export { loginWithGoogle, logoutUser, sendMessage, getMessages };

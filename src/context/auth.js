@@ -1,5 +1,5 @@
 import { useState, createContext } from "react";
-import { loginWithGoogle } from "../services/firebase";
+import { loginWithGoogle, logoutUser } from "../services/firebase";
 
 const AuthContext = createContext();
 
@@ -17,7 +17,14 @@ const AuthProvider = (props) => {
     setUser(user);
   };
 
-  const value = { user, login };
+  const logout = () => {
+    if (user) {
+      logoutUser();
+      setUser('');
+    }
+  }
+
+  const value = { user, login, logout };
 
   return <AuthContext.Provider value={value} {...props} />;
 }
